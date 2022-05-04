@@ -8,7 +8,7 @@ const doc = {
           name: "Francoise"
         },
     },
-        host: "ebuwork.herokuapp.com/",
+        host: "ebuwork.herokuapp.com",
         schemes: ['https'],
     };
 

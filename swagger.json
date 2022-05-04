@@ -8,7 +8,7 @@
       "name": "Francoise"
     }
   },
-  "host": "ebuwork.herokuapp.com/",
+  "host": "ebuwork.herokuapp.com",
   "basePath": "/",
   "schemes": [
     "https"
