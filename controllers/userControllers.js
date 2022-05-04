@@ -67,47 +67,47 @@ exports.login = async (request, response) => {
 
 
 
-// Edit a user
-// exports.editUsers = async (request, response) => {
-//     if(!request.body) {
-//         response.status(400).send({
-//             message: "Data to update can not be empty!"
-//         });
-//     }
+//Edit a user
+exports.edit_users = async (request, response) => {
+    if(!request.body) {
+        response.status(400).send({
+            message: "Data to update can not be empty!"
+        });
+    }
     
-//     const id = request.params._id;
+    const id = request.params._id;
     
-//     await postModel.findByIdAndUpdate(id, request.body, { useFindAndModify: false }).then(data => {
-//         if (!data) {
-//             return response.status(404).send({
-//                 message: `There is no user at id: ${id}`
-//             });
-//         }else{
+    await postModel.findByIdAndUpdate(id, request.body, { useFindAndModify: false }).then(data => {
+        if (!data) {
+            return response.status(404).send({
+                message: `There is no user at id: ${id}`
+            });
+        }else{
            
-//             //return res.status(204);
-//              return response.status(200).send({
-//              success: true,
-//              message: "User updated successfully."
+            //return res.status(204);
+             return response.status(200).send({
+             success: true,
+             message: "User updated successfully."
            
-//             // message: `There is no task at id: ${taskId}`
-//       }) 
-//       return;
-//         }
-//     }).catch(err => {
-//         response.status(500).send({
-//             message: err.message
-//         });
+            
+      }) 
+      return;
+        }
+    }).catch(err => {
+        response.status(500).send({
+            message: err.message
+        });
 
 
-    //}
+    }
     
     
     
-//     );
+    );
 
 
 
-// };
+};
 
 // Exporting the endpoints
 // module.exports = app;

@@ -10,7 +10,7 @@ router.post("/add_user", userController.add_user)
 router.get("/users", userController.list_users)
 
 // update a user
-// router.put("/users/:_id", userController.updateUsers)
+router.put("/users/:_id", userController.edit_users)
 
 
 // delet a user
