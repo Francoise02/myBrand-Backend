@@ -1,7 +1,7 @@
 let chai = require ("chai");
 let chaiHttp = require ("chai-http");
 // let server = require("../index3.js");
-let app = require("../index3.js");
+let app = require("../index.js");
 // let faker = require("@faker-js/faker");
 const {describe} = require("mocha");
 const {response } = require("express");

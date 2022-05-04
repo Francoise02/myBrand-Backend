@@ -10,7 +10,7 @@
   "scripts": {
     "test": "mocha --exit",
     "coverage": "nyc --reporter=html --reporter=text npm run test",
-    "start": "node index3.js"
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
