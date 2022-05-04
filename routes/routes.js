@@ -10,11 +10,11 @@ router.post("/add_user", userController.add_user)
 router.get("/users", userController.list_users)
 
 // update a user
-router.put("/users/:_id", userController.edit_users)
+// router.put("/users/:_id", userController.edit_users)
 
 
 // delet a user
-router.delete("/users/:_id", userController.delete_user)
+// router.delete("/users/:_id", userController.delete_user)
 
 
 // login

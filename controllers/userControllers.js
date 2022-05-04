@@ -68,78 +68,78 @@ exports.login = async (request, response) => {
 
 
 //Edit a user
-exports.edit_users = async (request, response) => {
-    if(!request.body) {
-        response.status(400).send({
-            message: "Data to update can not be empty!"
-        });
-    }
+// exports.edit_users = async (request, response) => {
+//     if(!request.body) {
+//         response.status(400).send({
+//             message: "Data to update can not be empty!"
+//         });
+//     }
     
-    const id = request.params._id;
+//     const id = request.params._id;
     
-    await postModel.findByIdAndUpdate(id, request.body, { useFindAndModify: false }).then(data => {
-        if (!data) {
-            return response.status(404).send({
-                message: `There is no user at id: ${id}`
-            });
-        }else{
+//     await postModel.findByIdAndUpdate(id, request.body, { useFindAndModify: false }).then(data => {
+//         if (!data) {
+//             return response.status(404).send({
+//                 message: `There is no user at id: ${id}`
+//             });
+//         }else{
            
-            //return res.status(204);
-             return response.status(200).send({
-             success: true,
-             message: "User updated successfully."
+//             //return res.status(204);
+//              return response.status(200).send({
+//              success: true,
+//              message: "User updated successfully."
            
             
-      }) 
-      return;
-        }
-    }).catch(err => {
-        response.status(500).send({
-            message: err.message
-        });
+//       }) 
+//       return;
+//         }
+//     }).catch(err => {
+//         response.status(500).send({
+//             message: err.message
+//         });
 
 
-    }
+//     }
     
     
     
-    );
+//     );
 
 
 
-};
+// };
 
-// Delete a post
-exports.delete_user = async (request, response) => {
-    try{ 
-    // look up course, not found raise 404
-      const userId = request.params._id
-      console.log(userId)
+// // Delete a user
+// exports.delete_user = async (request, response) => {
+//     try{ 
+//     // look up course, not found raise 404
+//       const userId = request.params._id
+//       console.log(userId)
       
-      const post = await postModel.findByIdAndRemove({ _id: userId }); 
+//       const post = await postModel.findByIdAndRemove({ _id: userId }); 
     
-    if(post) {
+//     if(post) {
     
-      console.log("deleted!");
+//       console.log("deleted!");
     
-      // return res.status(204)
-      response.status(204).send({
-            message: "Data to update can not be empty!"
-        });
-    }
+//       // return res.status(204)
+//       response.status(204).send({
+//             message: "Data to update can not be empty!"
+//         });
+//     }
    
-    else {
-      return response.status(204).json({
-      success: false,
-      message: `There is no post at id: ${userId}`
-      }) 
-    }
+//     else {
+//       return response.status(204).json({
+//       success: false,
+//       message: `There is no post at id: ${userId}`
+//       }) 
+//     }
   
-     } catch(error) {
-        //   response.status(500).send(error);
-          response.status(500).send({ message: error.toString()});
-  }
-};
+//      } catch(error) {
+//         //   response.status(500).send(error);
+//           response.status(500).send({ message: error.toString()});
+//   }
+// };
 
 // Exporting the endpoints
 // module.exports = app;
