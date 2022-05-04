@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "mocha --exit",
-    "coverage": "nyc npm run test",
+    "coverage": "nyc --reporter=html --reporter=text npm run test",
     "start": "node index3.js"
   },
   "keywords": [],
@@ -27,6 +27,7 @@
     "mongoose": "^6.3.2",
     "mongoose-sequence": "^5.3.1",
     "nodemon": "^2.0.16",
+    "nyc": "^15.1.0",
     "should": "^13.2.3",
     "swagger-autogen": "^2.21.1",
     "swagger-jsdoc": "^6.2.1",
