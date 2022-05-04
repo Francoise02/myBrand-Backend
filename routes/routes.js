@@ -14,7 +14,7 @@ router.put("/users/:_id", userController.edit_users)
 
 
 // delet a user
-// router.delete("/users/:_id", userController.deleteUsers)
+router.delete("/users/:_id", userController.delete_user)
 
 
 // login

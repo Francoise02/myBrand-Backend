@@ -21,7 +21,7 @@
         "responses": {}
       }
     },
-    "/posts/add_post": {
+    "/api/v1/add_post": {
       "post": {
         "description": "",
         "parameters": [],
@@ -35,7 +35,7 @@
         }
       }
     },
-    "/posts/posts": {
+    "/api/v1/posts": {
       "get": {
         "description": "",
         "parameters": [],
@@ -49,7 +49,7 @@
         }
       }
     },
-    "/posts/posts/{postId}": {
+    "/api/v1/posts/{postId}": {
       "get": {
         "description": "",
         "parameters": [
@@ -117,7 +117,7 @@
         }
       }
     },
-    "/posts/posts/{postId}/comments": {
+    "/api/v1/posts/{postId}/comments": {
       "get": {
         "description": "",
         "parameters": [
@@ -141,7 +141,7 @@
         }
       }
     },
-    "/posts/posts/{postId}/upvotes": {
+    "/api/v1/posts/{postId}/upvotes": {
       "put": {
         "description": "",
         "parameters": [
@@ -196,7 +196,7 @@
         }
       }
     },
-    "/posts/posts/{postId}/downvotes": {
+    "/api/v1/posts/{postId}/downvotes": {
       "get": {
         "description": "",
         "parameters": [
@@ -220,7 +220,7 @@
         }
       }
     },
-    "/users/add_user": {
+    "/api/v1/add_user": {
       "post": {
         "description": "",
         "parameters": [
@@ -253,7 +253,7 @@
         }
       }
     },
-    "/users/users": {
+    "/api/v1/users": {
       "get": {
         "description": "",
         "parameters": [],
@@ -267,7 +267,7 @@
         }
       }
     },
-    "/users/{_id}": {
+    "/api/v1/users/{_id}": {
       "put": {
         "description": "",
         "parameters": [
@@ -281,7 +281,7 @@
         "responses": {}
       }
     },
-    "/users/login": {
+    "/api/v1/login": {
       "post": {
         "description": "",
         "parameters": [

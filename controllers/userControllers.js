@@ -109,5 +109,37 @@ exports.edit_users = async (request, response) => {
 
 };
 
+// Delete a post
+exports.delete_user = async (request, response) => {
+    try{ 
+    // look up course, not found raise 404
+      const userId = request.params._id
+      console.log(userId)
+      
+      const post = await postModel.findByIdAndRemove({ _id: userId }); 
+    
+    if(post) {
+    
+      console.log("deleted!");
+    
+      // return res.status(204)
+      response.status(204).send({
+            message: "Data to update can not be empty!"
+        });
+    }
+   
+    else {
+      return response.status(204).json({
+      success: false,
+      message: `There is no post at id: ${userId}`
+      }) 
+    }
+  
+     } catch(error) {
+        //   response.status(500).send(error);
+          response.status(500).send({ message: error.toString()});
+  }
+};
+
 // Exporting the endpoints
 // module.exports = app;
