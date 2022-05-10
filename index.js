@@ -21,7 +21,6 @@ app.use((req, res, next) => {
 })
   .use('/', require('./routes/routeServer'));
 
-// Extended: https://swagger.io/specification/#infoObject
 
 const username = "Francoise";
 const password = "root";
@@ -42,9 +41,7 @@ db.once("open", function () {
   console.log("Connected successfully");
 });
 
-// app.get('/', (req, res) => {
-//   res.send('https://app.swaggerhub.com/apis/cloners/Reddit/1.0.0')
-// });
+
 
 app.use('/api/v1', UserRouter);
 app.use('/api/v1', PostRouter);
@@ -52,9 +49,9 @@ app.use('/api/v1', PostRouter);
 const PORT = process.env.PORT || 8000;
 
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/build'));
-}
+// if (process.env.NODE_ENV === 'production') {
+//   app.use(express.static('client/build'));
+// }
 
 app.listen(PORT, () => {
   console.log(`Server is running at port ${PORT}`);
