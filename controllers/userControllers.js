@@ -4,6 +4,7 @@ const express = require("express");
 const User = require("../models/users");
 const app = express();
 const jwt = require('jsonwebtoken')
+const signtoken = require ('../middleware/auth')
 
 // Endpoint to add a new user
 exports.add_user = async (request, response) => {
@@ -44,25 +45,50 @@ exports.list_users = async (request, response) => {
 };
 
 
-exports.login = async (request, response) => {
-    const user = await userModel.findOne({
-        email: request.body.email,
-        password: request.body.password,
-    })
-
-    if (user) {
-
-            const token = jwt.sign(
-            {
-                email: user.email
-            }, 
-            'topsecret250'
-        )
-
-        return response.json({status:"ok", user: token })
-    } else {
-        return response.json({status:"error", user: false })
+exports.login = async (req, res) => {
+    try {
+        let {email, password} = req.body;
+        const userFound = await userModel.findOne({ email: email})
+        if (userFound) {
+            const token = signtoken({
+                userId: userFound.id,
+                username: userFound.username
+            })
+            res.status(201).json({
+                messsage: `welcome ${userFound.username}`,
+                token: token
+            })
+        } else {
+            res.status(404).jon({
+                message: "User not found"
+            })
+        }
+    } catch (error) {
+        res.status(500).json({
+            message: "Error occurred",
+            error: error
+        })
     }
+    // const user = await userModel.findOne({
+    //     email: request.body.email,
+    //     password: request.body.password,
+    // })
+
+
+
+    // if (user) {
+
+    //         const token = jwt.sign(
+    //         {
+    //             email: user.email
+    //         }, 
+    //         'topsecret250'
+    //     )
+    //     // return response.redirect('dashboard.html')
+    //     return response.json({status:"ok", user: token })
+    // } else {
+    //     return response.json({status:"error", user: false })
+    // }
 }
 
 

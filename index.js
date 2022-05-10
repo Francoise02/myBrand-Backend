@@ -16,10 +16,10 @@ app.use(cors())
 
 app.use(bodyParser.json())
 app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin','*');
-    next();
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  next();
 })
-.use('/', require('./routes/routeServer'));
+  .use('/', require('./routes/routeServer'));
 
 // Extended: https://swagger.io/specification/#infoObject
 
@@ -29,7 +29,7 @@ const cluster = "cluster0";
 const dbname = "myBrand";
 
 mongoose.connect(
-  process.env.MONGODB_URI || `mongodb+srv://${username}:${password}@${cluster}.ov7s3.mongodb.net/${dbname}?retryWrites=true&w=majority`, 
+  process.env.MONGODB_URI || `mongodb+srv://${username}:${password}@${cluster}.ov7s3.mongodb.net/${dbname}?retryWrites=true&w=majority`,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -46,8 +46,8 @@ db.once("open", function () {
 //   res.send('https://app.swaggerhub.com/apis/cloners/Reddit/1.0.0')
 // });
 
-app.use('/api/v1',UserRouter);
-app.use('/api/v1',PostRouter);
+app.use('/api/v1', UserRouter);
+app.use('/api/v1', PostRouter);
 
 const PORT = process.env.PORT || 8000;
 
