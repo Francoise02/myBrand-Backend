@@ -21,7 +21,7 @@
         "responses": {}
       }
     },
-    "/posts/add_post": {
+    "/api/v1/add_post": {
       "post": {
         "description": "",
         "parameters": [],
@@ -35,7 +35,7 @@
         }
       }
     },
-    "/posts/posts": {
+    "/api/v1/posts": {
       "get": {
         "description": "",
         "parameters": [],
@@ -49,7 +49,7 @@
         }
       }
     },
-    "/posts/posts/{postId}": {
+    "/api/v1/posts/{postId}": {
       "get": {
         "description": "",
         "parameters": [
@@ -117,7 +117,7 @@
         }
       }
     },
-    "/posts/posts/{postId}/comments": {
+    "/api/v1/posts/{postId}/comments": {
       "get": {
         "description": "",
         "parameters": [
@@ -141,7 +141,7 @@
         }
       }
     },
-    "/posts/posts/{postId}/upvotes": {
+    "/api/v1/posts/{postId}/upvotes": {
       "put": {
         "description": "",
         "parameters": [
@@ -196,7 +196,7 @@
         }
       }
     },
-    "/posts/posts/{postId}/downvotes": {
+    "/api/v1/posts/{postId}/downvotes": {
       "get": {
         "description": "",
         "parameters": [
@@ -220,7 +220,7 @@
         }
       }
     },
-    "/users/add_user": {
+    "/api/v1/add_user": {
       "post": {
         "description": "",
         "parameters": [
@@ -253,7 +253,7 @@
         }
       }
     },
-    "/users/users": {
+    "/api/v1/users": {
       "get": {
         "description": "",
         "parameters": [],
@@ -267,7 +267,7 @@
         }
       }
     },
-    "/users/login": {
+    "/api/v1/login": {
       "post": {
         "description": "",
         "parameters": [
@@ -287,6 +287,102 @@
             }
           }
         ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/v1/add_querry": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/v1/querries/{id}": {
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/v1/querries": {
+      "get": {
+        "description": "",
+        "parameters": [],
         "responses": {
           "200": {
             "description": "OK"

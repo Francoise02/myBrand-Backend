@@ -49,7 +49,10 @@ exports.login = async (req, res) => {
     try {
         let {email, password} = req.body;
         const userFound = await userModel.findOne({ email: email})
+
+
         if (userFound) {
+            if (password == userFound.password){
             const token = signtoken({
                 userId: userFound.id,
                 username: userFound.username
@@ -57,15 +60,20 @@ exports.login = async (req, res) => {
             res.status(201).json({
                 messsage: `welcome ${userFound.username}`,
                 token: token
-            })
+            })}
+            else {
+                res.status(403).json({
+                    message: "Incorrect password"
+                })
+            }
         } else {
-            res.status(404).jon({
+            res.status(404).json({
                 message: "User not found"
             })
         }
     } catch (error) {
         res.status(500).json({
-            message: "Error occurred",
+            message: "User not found",
             error: error
         })
     }

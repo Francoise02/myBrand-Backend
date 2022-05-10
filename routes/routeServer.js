@@ -1,8 +1,10 @@
 const express = require('express')
 const router = express.Router()
 router.use('/', require('./swagger'));
-router.use('/posts', require('./postRoutes'));
-router.use('/users', require('./routes'));
+router.use('/api/v1', require('./postRoutes'));
+router.use('/api/v1', require('./routes'));
+router.use('/api/v1', require('./querryRoutes'))
+
 
   
 module.exports = router;

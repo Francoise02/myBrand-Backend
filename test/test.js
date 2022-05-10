@@ -177,13 +177,14 @@ describe("Test two: Users", () => {
             .request(app)
             .post("/api/v1/login")
             .send({
-                username:"Franço",
                 email:"Franço@gmail.com",
+                password: "*******"
 
             })
             .then((res) => {
-                const body = res.body;
-                expect(body).to.have.status("error");
+                res.should.have.status(404)
+                // const body = res.status;
+                // expect(body).to.have.status(404);
 
                 done();
             })
