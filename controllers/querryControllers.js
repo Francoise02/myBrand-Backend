@@ -17,7 +17,7 @@ exports.CreateQuery = async (req, res) => {
   }
 
   try {
-    
+    console.log(req.body);
     const query = await Queries.create(req.body);
 
     // create reusable transporter object using the default SMTP transport

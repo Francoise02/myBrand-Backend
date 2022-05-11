@@ -9,7 +9,8 @@ exports.add_post = async (request, response) => {
 
   try {
     await post.save();
-    response.status(200).json({ post });
+    response.status(200)
+    // .json({ post });
   } catch (error) {
     //   response.status(500).send(error){message:error};
     response.status(500).send({ message: error.toString() })
@@ -21,7 +22,7 @@ exports.get_posts = async (request, response) => {
   const posts = await postModel.find({});
 
   try {
-    response.send(posts);
+    // response.send(posts);
   } catch (error) {
     response.status(500).send(error);
   }
