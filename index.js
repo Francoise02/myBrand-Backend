@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 const Router = require("./routes/routes");
 const PostRouter = require("./routes/postRoutes");
 const UserRouter = require("./routes/routes");
+const querryRouter = require("./routes/querryRoutes");
+const subscriber = require("./routes/subscriber");
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
 const swaggerJsDoc = require("swagger-jsdoc");
@@ -45,6 +47,8 @@ db.once("open", function () {
 
 app.use('/api/v1', UserRouter);
 app.use('/api/v1', PostRouter);
+app.use('/api/v1', querryRouter);
+app.use('/api/v1', subscriber);
 
 const PORT = process.env.PORT || 8000;
 

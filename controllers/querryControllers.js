@@ -1,5 +1,5 @@
 
-const Queries= require('../models/queries')
+const Queries = require('../models/queries')
 const dotenv = require('dotenv')
 const nodemailer = require('nodemailer')
 
@@ -26,15 +26,15 @@ exports.CreateQuery = async (req, res) => {
       port: 587,
       secure: false, // true for 465, false for other ports
       auth: {
-        user: "mukantwarifrancoise2@gmail.com", // generated ethereal user
+        user: "f.mukantwari@alustudent.com", // generated ethereal user
         pass: process.env.MAIL_PASSWORD, // generated ethereal password
       },
     });
 
 
     let info = await transporter.sendMail({
-      from: `${req.body.name} <mukantwarifrancoise2@gmail.com>`, // sender address
-      to: "f.mukantwari@alustudent.com", // list of receivers
+      from: `${req.body.name} <f.mukantwari@alustudent.com>`, // sender address
+      to: "mukantwarifrancoise2@alustudent.com", // list of receivers
       subject: "contactme", // Subject line
       text: req.body.email, // plain text body
       html: `${req.body.email} <br> ${req.body.name} <br> ${req.body.message}`
@@ -44,9 +44,6 @@ exports.CreateQuery = async (req, res) => {
 
 
     // send mail with defined transport object
-
-
-
 
     res.status(201).json({ success: true, data: { message: "Thanks for contacting me. I will get back to you soon" } });
 
@@ -85,7 +82,7 @@ exports.DeleteQuery = async (req, res) => {
     console.log(error);
     res.status(500).json({
       success: false,
-      message: "Something is wrong...",
+      message: "Eror occured",
     });
   }
 };

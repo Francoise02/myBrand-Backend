@@ -1,10 +1,10 @@
-let chai = require ("chai");
-let chaiHttp = require ("chai-http");
+let chai = require("chai");
+let chaiHttp = require("chai-http");
 // let server = require("../index3.js");
 let app = require("../index.js");
 // let faker = require("@faker-js/faker");
-const {describe} = require("mocha");
-const {response } = require("express");
+const { describe } = require("mocha");
+const { response } = require("express");
 const { expect } = chai;
 
 chai.should();
@@ -17,7 +17,7 @@ describe("Test one : posts", () => {
             .get("/api/v1/posts")
             .end((err, res) => {
                 res.should.have.status(200);
-               
+
                 done();
             });
     }).timeout(30000);
@@ -39,15 +39,15 @@ describe("Test one : posts", () => {
             .set({
                 Accept: "application/json"
             })
-            .send({	
-                title:"Coding is fun",
-                content:"Have fun for life",
+            .send({
+                title: "Coding is fun",
+                content: "Have fun for life",
                 downvotes: 20,
-                upvotes:2000,
+                upvotes: 2000,
                 category: ["Tech", "Programming"],
                 comment: ["Wow nice!!"]
             })
-            .then((res,err) => {
+            .then((res, err) => {
 
                 const body = res.body;
                 expect(body).to.be.a("object");
@@ -56,43 +56,43 @@ describe("Test one : posts", () => {
                 const id = body.post._id;
 
                 chai
-                .request(app)
-                .get(`/api/v1/posts/${id}`)
-                .end((err, res) => {
-                    res.should.have.status(200);
-                })
+                    .request(app)
+                    .get(`/api/v1/posts/${id}`)
+                    .end((err, res) => {
+                        res.should.have.status(200);
+                    })
 
                 chai
-                .request(app)
-                .put(`/api/v1/posts/${id}`)
-                .set({
-                    Accept: "application/json"
-                })
-                .send({
-                        title:"Coding is fun",
-                        content:"Have fun for life",
+                    .request(app)
+                    .put(`/api/v1/posts/${id}`)
+                    .set({
+                        Accept: "application/json"
+                    })
+                    .send({
+                        title: "Coding is fun",
+                        content: "Have fun for life",
                         downvotes: 20,
-                        upvotes:2000,
+                        upvotes: 2000,
                         category: ["Tech", "Programming"],
                         comment: ["Wow nice!!"]
                     })
-                .then((res) => {    
-                    const body = res.body;
-                    expect(body).to.be.a("object");
-
-                    chai
-                    .request(app)
-                    .delete(`/api/v1//posts/${id}`)
-                    .set({
-                        Accept: "application/json"                
-                    })
                     .then((res) => {
-                        res.should.have.status(204);
-                        done();
-                    });
-                    
-                })
-                .catch((err) => done(err));
+                        const body = res.body;
+                        expect(body).to.be.a("object");
+
+                        chai
+                            .request(app)
+                            .delete(`/api/v1//posts/${id}`)
+                            .set({
+                                Accept: "application/json"
+                            })
+                            .then((res) => {
+                                res.should.have.status(204);
+                                done();
+                            });
+
+                    })
+                    .catch((err) => done(err));
             });
     }).timeout(30000);
 
@@ -148,26 +148,26 @@ describe("Test two: Users", () => {
                 Accept: "application/json"
             })
             .send({
-                username:"Françoise",
-                email:"Françoise@gmail.com",
-                password:"F20jowej,"
+                username: "Françoise",
+                email: "Françoise@gmail.com",
+                password: "F20jowej,"
             })
             .then((res) => {
                 const body = res.body;
                 expect(body).to.be.a("object");
-               
+
                 const id = body.user._id;
 
-            chai
-            .request(app)
-            .get(`/api/v1/users/${id}`)
-            .end((err, res) => {
-                res.should.have.status(404);
-                done();
-            });
+                chai
+                    .request(app)
+                    .get(`/api/v1/users/${id}`)
+                    .end((err, res) => {
+                        res.should.have.status(404);
+                        done();
+                    });
 
 
-            
+
             })
             .catch((err) => done(err));
     }).timeout(30000);
@@ -177,7 +177,7 @@ describe("Test two: Users", () => {
             .request(app)
             .post("/api/v1/login")
             .send({
-                email:"Franço@gmail.com",
+                email: "Franço@gmail.com",
                 password: "*******"
 
             })
