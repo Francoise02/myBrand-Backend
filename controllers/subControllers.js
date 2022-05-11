@@ -9,7 +9,7 @@ const signtoken = require('../middleware/auth')
 exports.add_user = async (request, response) => {
 
     console.log(request.body)
-   
+
     try {
 
         const user = await subModel.create({
@@ -19,7 +19,7 @@ exports.add_user = async (request, response) => {
 
         })
         await user.save();
-        response.status(200).json({ status: 'ok', user })
+        response.status(200).json({ message: "Subscribed!"})
 
     }
     catch (error) {
@@ -71,30 +71,30 @@ exports.login = async (req, res) => {
         })
     }
 
-// Retrieve a sub by ID
-exports.retrieve_sub = async (request, response) => {
-    try {
-      const subId = request.params.subId
-      console.log(subId)
-        const subscriber = await subModel.findById({_id: subId });  
-        
-        
-        if (subscriber){
-          return response.status(200).json({
-          success: true,
-          data: subscriber,
-          });
-        } else {
-            return response.status(404).json({
-            success: false,
-            message: `There is no subscriber at id: ${subId}`
-          });
+    // Retrieve a sub by ID
+    exports.retrieve_sub = async (request, response) => {
+        try {
+            const subId = request.params.subId
+            console.log(subId)
+            const subscriber = await subModel.findById({ _id: subId });
+
+
+            if (subscriber) {
+                return response.status(200).json({
+                    success: true,
+                    data: subscriber,
+                });
+            } else {
+                return response.status(404).json({
+                    success: false,
+                    message: `There is no subscriber at id: ${subId}`
+                });
+            }
+
+        } catch (error) {
+            // response.status(500).send(error);
+            response.status(500).send({ message: error.toString() });
         }
-       
-    } catch (error) {
-      // response.status(500).send(error);
-      response.status(500).send({ message: error.toString()});
-    }
-  };
+    };
 
 }

@@ -15,6 +15,7 @@ const app = express();
 
 app.use(express.json());
 app.use(cors())
+app.options('*',cors())
 
 app.use(bodyParser.json())
 app.use((req, res, next) => {
@@ -43,7 +44,10 @@ db.once("open", function () {
   console.log("Connected successfully");
 });
 
-
+app.use((req,res,next)=>{
+  console.log("A smooth creminal",req.body);
+  next();
+})
 
 app.use('/api/v1', UserRouter);
 app.use('/api/v1', PostRouter);

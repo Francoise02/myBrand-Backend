@@ -22,7 +22,7 @@ exports.add_user = async (request, response) => {
 
         })
         await user.save();
-        response.status(200).json({status: 'ok',user})
+        response.status(200).json({message: "Successfully added user"})
         
     } 
     catch (error) {

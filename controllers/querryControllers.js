@@ -17,7 +17,7 @@ exports.CreateQuery = async (req, res) => {
   }
 
   try {
-    console.log(req.body);
+    
     const query = await Queries.create(req.body);
 
     // create reusable transporter object using the default SMTP transport
@@ -34,18 +34,17 @@ exports.CreateQuery = async (req, res) => {
 
     let info = await transporter.sendMail({
       from: `${req.body.name} <f.mukantwari@alustudent.com>`, // sender address
-      to: "mukantwarifrancoise2@alustudent.com", // list of receivers
-      subject: "contactme", // Subject line
+      to: "mukantwarifrancoise2@gmail.com", // list of receivers
+      subject: "Contact me", // Subject line
       text: req.body.email, // plain text body
       html: `${req.body.email} <br> ${req.body.name} <br> ${req.body.message}`
 
     });
 
 
-
     // send mail with defined transport object
 
-    res.status(201).json({ success: true, data: { message: "Thanks for contacting me. I will get back to you soon" } });
+    res.status(201).json({ success: true, data: { message: "Thanks for reaching out! I will get back to you soon" } });
 
 
   } catch (error) {
@@ -129,3 +128,4 @@ exports.SearchQueries = async (req, res) => {
     data: queries,
   });
 };
+

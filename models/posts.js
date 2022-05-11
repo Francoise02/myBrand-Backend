@@ -5,53 +5,53 @@ const { Schema } = mongoose;
 
 const Comment = new mongoose.Schema({
     content: {
-            type: String
-            },
+        type: String
+    },
     timePosted: {
-            type: Date,
-            default: Date.now
-            },
+        type: Date,
+        default: Date.now
+    },
     _creator: {
-            type: Schema.ObjectId, ref:'User',
-            default: "fefzeeefzefz"
-              }
+        type: Schema.ObjectId, ref: 'User',
+        default: "fefzeeefzefz"
+    }
 }
 )
 
 const PostSchema = new mongoose.Schema({
     // _Postid: String,
     // _id: Number,
-title: {
-    type: String,
-    required: true,
-  },
+    title: {
+        type: String,
+        required: true,
+    },
     content: {
         type: String,
         required: true,
-  },
-  dateTime: {
+    },
+    dateTime: {
         type: Date,
         default: Date.now
-  },
-  downvotes: {
+    },
+    downvotes: {
         type: Number,
         default: 0
-  },
-  upvotes: {
+    },
+    upvotes: {
         type: Number,
         default: 0
-  },
-  category: {
-            type: Array        
-        },
+    },
+    category: {
+        type: Array
+    },
 
     comments: [Comment]
- 
+
 
 });
 
 
-PostSchema.plugin(AutoIncrement,{inc_field: 'id'});
+PostSchema.plugin(AutoIncrement, { inc_field: 'id' });
 const Post = mongoose.model("Post", PostSchema);
 const CommentMod = mongoose.model("Comment", Comment);
 
