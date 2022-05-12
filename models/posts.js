@@ -25,10 +25,25 @@ const PostSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+
+    image: {
+        type: String,
+        contentType: String,
+        required: true
+    },
+
+    hook: {
+        type: String,
+        required: true,
+    },
+
     content: {
         type: String,
         required: true,
     },
+
+
+
     dateTime: {
         type: Date,
         default: Date.now

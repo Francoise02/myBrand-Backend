@@ -114,7 +114,7 @@ describe("Test one : posts", () => {
                 done();
             })
             .catch((err) => done(err))
-    }).timeout(30000);
+    }).timeout(50000);
 
 });
 
@@ -140,37 +140,37 @@ describe("Test two: Users", () => {
     //         });
     // }).timeout(30000);
 
-    it("Create a user + Get one user", (done) => {
-        chai
-            .request(app)
-            .post("/api/v1/add_user")
-            .set({
-                Accept: "application/json"
-            })
-            .send({
-                username: "Françoise",
-                email: "Françoise@gmail.com",
-                password: "F20jowej,"
-            })
-            .then((res) => {
-                const body = res.body;
-                expect(body).to.be.a("object");
+    // it("Create a user + Get one user", (done) => {
+    //     chai
+    //         .request(app)
+    //         .post("/api/v1/add_user")
+    //         .set({
+    //             Accept: "application/json"
+    //         })
+    //         .send({
+    //             username: "Françoise",
+    //             email: "Françoise@gmail.com",
+    //             password: "F20jowej,"
+    //         })
+    //         .then((res) => {
+    //             const body = res.body;
+    //             expect(body).to.be.a("object");
 
-                const id = body.user._id;
+    //             const id = body.user._id;
 
-                chai
-                    .request(app)
-                    .get(`/api/v1/users/${id}`)
-                    .end((err, res) => {
-                        res.should.have.status(404);
-                        done();
-                    });
+    //             chai
+    //                 .request(app)
+    //                 .get(`/api/v1/users/${id}`)
+    //                 .end((err, res) => {
+    //                     res.should.have.status(404);
+    //                     done();
+    //                 });
 
 
 
-            })
-            .catch((err) => done(err));
-    }).timeout(30000);
+    //         })
+    //         .catch((err) => done(err));
+    // }).timeout(30000);
 
     it("User logging in", (done) => {
         chai

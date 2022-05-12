@@ -10,9 +10,9 @@ exports.add_post = async (request, response) => {
   try {
     await post.save();
     response.status(200)
-    // .json({ post });
+ 
   } catch (error) {
-    //   response.status(500).send(error){message:error};
+   
     response.status(500).send({ message: error.toString() })
   }
 };

@@ -119,13 +119,13 @@ exports.getQueryById = async (req, res) => {
 };
 
 // search queries
-exports.SearchQueries = async (req, res) => {
-  const queries = await Queries.find({
-    $text: { $search: req.query.q },
-  });
-  res.status(200).json({
-    success: true,
-    data: queries,
-  });
-};
+// exports.SearchQueries = async (req, res) => {
+//   const queries = await Queries.find({
+//     $text: { $search: req.query.q },
+//   });
+//   res.status(200).json({
+//     success: true,
+//     data: queries,
+//   });
+// };
 
