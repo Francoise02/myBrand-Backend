@@ -15,14 +15,14 @@ const app = express();
 
 app.use(express.json());
 app.use(cors())
-app.options('*',cors());
+app.options('*',cors())
 
-app.use(bodyParser.json());
-// app.use((req, res, next) => {
-//   res.setHeader('Access-Control-Allow-Origin', '*', );
-//   next();
-// })
- // .use('/', require('./routes/routeServer'));
+app.use(bodyParser.json())
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*', );
+  next();
+})
+  .use('/', require('./routes/routeServer'));
 
 mongoose.connect(process.env.MONGODB_URI,{
     useNewUrlParser: true,
@@ -44,13 +44,8 @@ db.once("open", function () {
   console.log("Connected successfully");
 });
 
-app.use((req,res,next)=>{
-  console.log("A smooth creminal",req.body);
-  next();
-})
-
-app.use('/api/v1', UserRouter);
 app.use('/api/v1', PostRouter);
+app.use('/api/v1', UserRouter);
 app.use('/api/v1', querryRouter);
 app.use('/api/v1', subscriber);
 
