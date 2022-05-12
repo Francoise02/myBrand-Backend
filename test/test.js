@@ -11,7 +11,7 @@ chai.should();
 chai.use(chaiHttp);
 
 describe("Test one : posts", () => {
-    it("get all posts", (done) => {
+    it.skip("get all posts", (done) => {
         chai
             .request(app)
             .get("/api/v1/posts")
@@ -32,7 +32,7 @@ describe("Test one : posts", () => {
     //         });
     // }).timeout(30000);
 
-    it("Create a post + Get one post + updating post + delete post", (done) => {
+    it.skip("Create a post + Get one post + updating post + delete post", (done) => {
         chai
             .request(app)
             .post("/api/v1/add_post")
@@ -70,6 +70,8 @@ describe("Test one : posts", () => {
                     })
                     .send({
                         title: "Coding is fun",
+                        hook: "post",
+                        image: "slj",
                         content: "Have fun for life",
                         downvotes: 20,
                         upvotes: 2000,
@@ -128,7 +130,7 @@ describe("Test two: Users", () => {
                 res.should.have.status(200);
                 done();
             });
-    });
+    }).timeout(30000);
 
     // it("get one user", (done) => {
     //     chai
